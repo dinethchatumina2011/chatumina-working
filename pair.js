@@ -1481,14 +1481,14 @@ case 'facebook': {
         const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-        const caption = `*↳ ❝ [🎀 sadew mini 🎀] ¡! ❞*\n\n` +
+        const caption = `*↳ ❝ [🎀 CHATHUWA mini 🎀] ¡! ❞*\n\n` +
                         `🎬 *TITLE :* ${videoData.title !== "No video title" ? videoData.title : 'Facebook Video'}\n` +
                         `⏱️ *DURATION :* ${videoData.duration}\n` +
                         `📺 *QUALITY :* ${quality}\n` +
                         `⚖️ *SIZE :* ${fileSizeMB} MB\n` +
                         `__________________________\n\n` +
                         `📅 *DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                        `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+                        `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         await socket.sendMessage(sender, {
             video: videoBuffer,
@@ -1558,14 +1558,14 @@ case 'tt': {
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
         // Akira Girl ලස්සන Caption එක
-        const caption = `*↳ ❝ [🎀 SADEW 𝗧𝗶𝗸𝗧𝗼𝗸 🎀] ¡! ❞*\n\n` +
+        const caption = `*↳ ❝ [🎀 CHATHUWA 𝗧𝗶𝗸𝗧𝗼𝗸 🎀] ¡! ❞*\n\n` +
                         `🎬 *TITLE :* ${title}\n` +
                         `✨ *QUALITY :* ${isHD}\n` +
                         `⚖️ *SIZE :* ${fileSizeMB} MB\n` +
                         `🚫 *WATERMARK :* No\n` +
                         `__________________________\n\n` +
                         `📅 *DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                        `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+                        `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         // 16MB වලට වඩා වැඩි නම් Document එකක් විදිහට යවනවා (Quality එක අඩුවෙන එක නවත්තන්න)
         if (videoBuffer.length > 40 * 1024 * 1024) {
@@ -1604,8 +1604,8 @@ case 'ai':
 case 'akira': {
     try { await socket.sendMessage(sender, { react: { text: '🍫', key: msg.key } }); } catch (_) {}
     const { NiyoXClient } = require("niyox");
-    const title = "🎀 *𝗔𝗸𝗶𝗿𝗮 𝗔𝗶 𝗚𝗶𝗿𝗹𝗳𝗿𝗲𝗻𝗱* 🎀";
-    const footer = "> *𝐀𝐞𝐬𝐭𝐡𝐚𝐭𝐢𝐜 𝐐𝐮𝐞𝐞𝐧 𝐁𝐲 𝐂𝐡𝐚𝐦𝐨𝐝 🌺*";
+    const title = "🎀 *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸* 🎀";
+    const footer = "> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 🌺*";
 
     // ✅ Get user input from various message types
     const q = msg.message?.conversation || 
@@ -1615,10 +1615,10 @@ case 'akira': {
               '';
 
     if (!q || q.trim() === '') {
-        return await socket.sendMessage(sender, { text: "ඕ කියන්න අනේ් මම Akira Girl 🎀" }, { quoted: msg });
+        return await socket.sendMessage(sender, { text: "ඕ කියන්න අනේ් මම CHATHUWA BOY 🎀" }, { quoted: msg });
     }
 
-    const prompt = `ඔබ සැබෑ ගැහැනු ලමයෙකු මෙන් හැසිරිය යුතුය. ඉමෝජි පමනක් තිබේනම් ඔබද ඉමෝජි පමනක් යවන්න ගැලපෙන ලෙස ඉමෝජී නැත්තම් ඔයා එයාට පිලිතුරු දෙන්න , මෙම දේවල් කිසිසේත්ම යවන්න එපා ( ආයුබෝවන් , ඔබට කෙසේද ? , katha karanna , ඕනේ ? , කොහොමද ? , කෙසේද ? , කැමතිද ? ,) මිනිසුන්ට ඇති හැඟීම්, දැනීම්, සහ සංවේදීතාවය අනුව පිළිතුරු ලබාදිය යුතුය. මැසේජ් එක ලැබෙන භාෂාවට ගැලපෙන ලෙස පිළිතුරු දෙන්න. ඔබ ලබාදිය යුතු පිළිතුරු අකුරු 100 ට වඩා අඩු විය යුතුය. සහ ආයුබෝවන් වගේ වචන බාවිතා කරන්න එපා උදව් අවශ්‍ය  ද අහන්නත් එපා , ඔයා ai ඇසිස්ටන් කෙනෙක් නෙමේ සැබෑ මිනිසෙක් , ඇසිස්ටන් කෙනෙක් වෙන්න එපා , ඔයා ඒ අයට ආදරෙන් කතා කරන්න , ඔයා ගේ නම Akira Girl 🎀 , ඔයාගෙන් කවුරු හරි දෙයක් ඇහුවාම ඒක තේරුම් අරගෙන මම දීලා තියෙන පිලිතුරු ඒවට ගැලපෙනවා නම් ඔයා එයාට ඒවා පිලිතුරු විදිහට කියන්න ,  ඔයාව හැදුවේ කවුද කියලා ඇහුවොත් විතරක් ඔයා කියන්නේ මාව හැදුවේ Chamod අයියා කියලා User Message: ${q}`;
+    const prompt = `. ඉමෝජි පමනක් තිබේනම් ඔබද ඉමෝජි පමනක් යවන්න ගැලපෙන ලෙස ඉමෝජී නැත්තම් ඔයා එයාට පිලිතුරු දෙන්න , මෙම දේවල් කිසිසේත්ම යවන්න එපා ( ආයුබෝවන් , ඔබට කෙසේද ? , katha karanna , ඕනේ ? , කොහොමද ? , කෙසේද ? , කැමතිද ? ,) මිනිසුන්ට ඇති හැඟීම්, දැනීම්, සහ සංවේදීතාවය අනුව පිළිතුරු ලබාදිය යුතුය. මැසේජ් එක ලැබෙන භාෂාවට ගැලපෙන ලෙස පිළිතුරු දෙන්න. ඔබ ලබාදිය යුතු පිළිතුරු අකුරු 100 ට වඩා අඩු විය යුතුය. සහ ආයුබෝවන් වගේ වචන බාවිතා කරන්න එපා උදව් අවශ්‍ය  ද අහන්නත් එපා , ඔයා ai ඇසිස්ටන් කෙනෙක් නෙමේ සැබෑ මිනිසෙක් , ඇසිස්ටන් කෙනෙක් වෙන්න එපා , ඔයා ඒ අයට ආදරෙන් කතා කරන්න , ඔයා ගේ නම Akira Girl 🎀 , ඔයාගෙන් කවුරු හරි දෙයක් ඇහුවාම ඒක තේරුම් අරගෙන මම දීලා තියෙන පිලිතුරු ඒවට ගැලපෙනවා නම් ඔයා එයාට ඒවා පිලිතුරු විදිහට කියන්න ,  ඔයාව හැදුවේ කවුද කියලා ඇහුවොත් විතරක් ඔයා කියන්නේ මාව හැදුවේ Chamod අයියා කියලා User Message: ${q}`;
 
     try {
         const client = new NiyoXClient({ sessionId: sender, timeout: 15000 });
@@ -1643,7 +1643,7 @@ case 'akira': {
     break;
 }
 
-// ════════════ SADEW MINI WORM-GPT (SAFE VERSION) ════════════
+// ════════════ CHATHUWA X MINI WORM-GPT (SAFE VERSION) ════════════
 
 case 'darkai':
 case 'wormgpt':
@@ -1656,7 +1656,7 @@ case 'ai': {
 
         // 💀 රිඇක්ෂන් එක දැමීම සහ ආරක්ෂිත එක Loading මැසේජ් එකක් යැවීම
         await socket.sendMessage(from, { react: { text: '💀', key: msg.key } });
-        let initialMsg = await socket.sendMessage(from, { text: '👾 *𝗦𝗔𝗗𝗘𝗪 𝗠𝗜𝗡𝗜 𝗪𝗢𝗥𝗠-𝗚𝗣𝗧 𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴...* ⏳' }, { quoted: msg });
+        let initialMsg = await socket.sendMessage(from, { text: '👾 *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗪𝗢𝗥𝗠-𝗚𝗣𝗧 𝗣𝗿𝗼𝗰𝗲𝘀𝘀𝗶𝗻𝗴...* ⏳' }, { quoted: msg });
 
         // 🌐 WolfApis හරහා WormGPT වෙතින් පිළිතුර ලබා ගැනීම
         const WOLF_API_KEY = "wxa_f_4e840b5e42";
@@ -1669,9 +1669,9 @@ case 'ai': {
 
             if (aiReply) {
                 // ✨ SADEW MINI ලස්සන Format එක
-                const finalMessage = `*↳ ❝ [👾 𝗦𝗔𝗗𝗘𝗪 𝗠𝗜𝗡𝗜 𝗪𝗢𝗥𝗠-𝗚𝗣𝗧 👾] ¡! ❞*\n\n` +
+                const finalMessage = `*↳ ❝ [👾 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗪𝗢𝗥𝗠-𝗚𝗣𝗧 👾] ¡! ❞*\n\n` +
                                      `${aiReply}\n\n` +
-                                     `> *𝗔esthatic 𝗤ueen 𝗕y 𝗦𝗔𝗗𝗘𝗪 𝜗𝜚⋆*`;
+                                     `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
                 // එක පාරක් විතරක් මැසේජ් එක Edit කිරීම (එතකොට WhatsApp එකෙන් ලොග් අවුට් කරන්නේ නෑ)
                 await socket.sendMessage(from, {
@@ -1740,10 +1740,10 @@ case 'vv': {
       const sockets = typeof activeSockets !== 'undefined' ? activeSockets : new Map();
       const nums = Array.from(sockets.keys());
       
-      const responseText = `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗦𝗲𝘀𝘀𝗶𝗼𝗻𝘀 🎀] ¡! ❞*\n\n` +
+      const responseText = `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸🎀] ¡! ❞*\n\n` +
                            `> *\`📡 𝙲𝙾𝚄𝙽𝚃 :\`* ${nums.length}\n\n` +
                            `${nums.map((n, i) => `> *\`${i + 1}.\`* +${n}`).join('\n')}\n\n` +
-                           `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+                           `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
                            
       await reply(responseText);
       break;
@@ -1760,14 +1760,14 @@ case 'vv': {
         const res = await axios.get(`https://registry.npmjs.org/${pkg}`, { timeout: 10000 });
         const d = res.data;
         
-        const npmInfo = `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗡𝗣𝗠 🎀] ¡! ❞*\n` +
+        const npmInfo = `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗡𝗣𝗠 🎀] ¡! ❞*\n` +
                         `⊹₊⟡⋆ 𝗡𝗮𝗺𝗲 - ${d.name} 𝜗𝜚⋆\n\n` +
                         `> *\`📦 𝚅𝙴𝚁𝚂𝙸𝙾𝙽 :\`* ${d['dist-tags']?.latest || 'N/A'}\n` +
                         `> *\`📝 𝙳𝙴𝚂𝙲 :\`* ${(d.description || 'N/A').slice(0, 100)}\n` +
                         `> *\`👤 𝙰𝚄𝚃𝙷𝙾𝚁 :\`* ${d.author?.name || 'N/A'}\n` +
                         `> *\`📄 𝙻𝙸𝙲𝙴𝙽𝚂𝙴 :\`* ${d.license || 'N/A'}\n` +
                         `> *\`🔗 𝙻𝙸𝙽𝙺 :\`* https://npmjs.com/package/${d.name}\n\n` +
-                        `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+                        `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         await socket.sendMessage(sender, { 
           image: { url: akira },
@@ -1846,11 +1846,11 @@ case 'img': {
         {
           image: { url: imgUrl },
           caption:
-`*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗜𝗠𝗚𝘀 🎀] ¡! ❞*
+`*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗜𝗠𝗚𝘀 🎀] ¡! ❞*
 
 *₊❏❜ ⋮ 🔍 Search:* ${q}
 
-> *𝗔esthetic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`
+> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`
         },
           { quoted: msg }
       );
@@ -1890,7 +1890,7 @@ case 'img': {
 
         await socket.sendMessage(sender, { 
           image: { url: dpUrl }, 
-          caption: `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗗𝗣 🎀] ¡! ❞*\n\n📷 Profile picture of @${target.split('@')[0]}`, 
+          caption: `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗗𝗣 🎀] ¡! ❞*\n\n📷 Profile picture of @${target.split('@')[0]}`, 
           mentions: [target] 
         }, { quoted: msg });
 
@@ -1951,9 +1951,9 @@ case 'img': {
         const ps       = gm.participants || [];
         const tm       = args.join(' ').trim() || '*Attention everyone!*';
         const mentions = ps.map(p => p.id);
-        let text = `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗧𝗮𝗴𝗮𝗹𝗹 🎀] ¡! ❞*\n\n> *\`🗣️ :\`* ${tm}\n\n`;
+        let text = `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸  𝗧𝗮𝗴𝗮𝗹𝗹 🎀] ¡! ❞*\n\n> *\`🗣️ :\`* ${tm}\n\n`;
         for (const p of ps) text += `₊❏❜ ⋮ @${p.id.split('@')[0]}\n`;
-        text += `\n> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+        text += `\n> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
         await socket.sendMessage(sender, { text, mentions }, { quoted: msg });
       } catch (e) { await reply(`tagall failed: ${e.message}`); }
       break;
@@ -2048,7 +2048,7 @@ case 'add': {
         const mentions = admins.map(p => p.id);
         let text = `╭─⊹₊⟡⋆『 \`𝐀𝐝𝐦𝐢𝐧\` 』𖤐.ᐟ\n*┃* ${tm}\n*┃*\n`;
         for (const p of admins) text += `*┃* @${p.id.split('@')[0]}\n`;
-        text += `╰──────────────────<𝟑 .ᐟ\n\n> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+        text += `╰──────────────────<𝟑 .ᐟ\n\n> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
         await socket.sendMessage(sender, { text, mentions }, { quoted: msg });
       } catch (e) { await replyFq(`tagadmin failed: ${e.message}`); }
       break;
@@ -2136,14 +2136,14 @@ case 'add': {
         const admCnt  = gm.participants.filter(p => p.admin).length;
         const created = gm.creation ? new Date(gm.creation * 1000).toLocaleDateString() : 'Unknown';
         await reply(
-          `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗚𝗜𝗻𝗳𝗼 🎀] ¡! ❞*\n\n` +
+          `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗚𝗜𝗻𝗳𝗼 🎀] ¡! ❞*\n\n` +
           `₊❏❜ ⋮ *\`📛 𝙽𝙰𝙼𝙴 :\`* ${gm.subject}\n` +
           `₊❏❜ ⋮ *\`🆔 𝙹𝙸𝙳 :\`* ${gm.id}\n` +
           `₊❏❜ ⋮ *\`📝 𝙳𝙴𝚂𝙲 :\`* ${(gm.desc || 'None').slice(0, 100)}\n` +
           `₊❏❜ ⋮ *\`👥 𝙼𝙴𝙼𝙱𝙴𝚁𝚂 :\`* ${total}\n` +
           `₊❏❜ ⋮ *\`👑 𝙰𝙳𝙼𝙸𝙽𝚂 :\`* ${admCnt}\n` +
           `₊❏❜ ⋮ *\`📅 𝙲𝚁𝙴𝙰𝚃𝙴𝙳 :\`* ${created}\n\n` +
-          `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`
+          `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`
         );
       } catch (e) { await reply(`groupinfo failed: ${e.message}`); }
       break;
@@ -2314,7 +2314,7 @@ case 'fancytext': {
         });
         
         styledMsg += `*┗━━━━━°⌜ \`赤い糸\` ⌟°━━━━━┛*\n\n`;
-        styledMsg += `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+        styledMsg += `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         await socket.sendMessage(sender, { 
             image: { url: akira }, 
@@ -2335,8 +2335,8 @@ case 'fancytext': {
 // ════════════ OWNER ════════════
 
                 case 'owner': {
-    const ownerNum = '+94707447414';
-    const ownerName = 'お 𝐂𝐡𝐚𝐦𝐨𝐝 ࣪𖤐.ᐟ';
+    const ownerNum = '+94741336839';
+    const ownerName = 'CHATHUWAᐟ';
     
     await socket.sendMessage(sender, { react: { text: '🥷', key: msg.key } });
 
@@ -2345,13 +2345,13 @@ case 'fancytext': {
         contacts: {
             displayName: ownerName,
             contacts: [{
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${ownerName}\nORG:𝐀𝐤𝐢𝐫𝐚 𝐗 𝐎𝐰𝐧𝐞𝐫;\nTEL;type=CELL;type=VOICE;waid=${ownerNum.slice(1)}:${ownerNum}\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${ownerName}\nORG:CHATHUWA 𝐗 𝐎𝐰𝐧𝐞𝐫;\nTEL;type=CELL;type=VOICE;waid=${ownerNum.slice(1)}:${ownerNum}\nEND:VCARD`
             }]
         }
     });
 
     await socket.sendMessage(sender, {
-        text: `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗢𝘄𝗻𝗲𝗿 🎀] ¡! ❞*\n\n₊❏❜ ⋮👤 Name: ${ownerName}\n₊❏❜ ⋮ 📞 Number: ${ownerNum}\n\n> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`,
+        text: `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗢𝘄𝗻𝗲𝗿 🎀] ¡! ❞*\n\n₊❏❜ ⋮👤 Name: ${ownerName}\n₊❏❜ ⋮ 📞 Number: ${ownerNum}\n\n> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`,
         contextInfo: {
             mentionedJid: [`${ownerNum.slice(1)}@s.whatsapp.net`]
         }
@@ -2395,7 +2395,7 @@ case 'lvcal': {
         else if (percentage >= 30) hearts = '💖💖';
         else hearts = '💖';
 
-        let shipText = `*↳ ❝ [🎀 𝗔𝗸𝗶𝗿𝗮 𝗚𝗶𝗿𝗹 𝗟𝘃𝗖𝗮𝗹 🎀] ¡! ❞*\n\n`;
+        let shipText = `*↳ ❝ [🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝗟𝘃𝗖𝗮𝗹 🎀] ¡! ❞*\n\n`;
         shipText += `*${name1}* 💑 *${name2}*\n\n`;
         shipText += `${hearts}\n`;
         shipText += `*Love Percentage:* ${percentage}%\n\n`;
@@ -2406,7 +2406,7 @@ case 'lvcal': {
         else if (percentage >= 20) shipText += `*Needs Work! 🤔💔*`;
         else shipText += `*Not Meant To Be! 😢💔*`;
         
-        shipText += `\n\n> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+        shipText += `\n\n> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         await socket.sendMessage(sender, { text: shipText }, { quoted: msg });
         await socket.sendMessage(sender, { react: { text: '✅', key: msg.key } });
@@ -2424,7 +2424,7 @@ case 'hack': {
     try {
         const from = msg.key.remoteJid; 
         const steps = [
-            '🎀 *𝐀𝐤𝐢𝐫𝐚 𝐇𝐚𝐜𝐤 𝐒𝐭𝐚𝐫𝐢𝐧𝐠...* 🎀',
+            '🎀 *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝐇𝐚𝐜𝐤 𝐒𝐭𝐚𝐫𝐢𝐧𝐠...* 🎀',
             '`ɪɴɪᴛɪᴀʟɪᴢɪɴɢ ʜᴀᴄᴋɪɴɢ ᴛᴏᴏʟꜱ...` 🛠️',
             '`ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ʀᴇᴍᴏᴛᴇ ꜱᴇʀᴠᴇʀ...` 🌐',
             '```[##] 20%``` ⏳',
@@ -2433,7 +2433,7 @@ case 'hack': {
             '```[########] 80%``` ⏳',
             '```[##########] 100%``` ✅',
             '🔒 *𝐒ystem 𝐁reach: 𝐒uccessful!* 🔓',
-            '*🎀 𝐀kira 𝐇acking 𝐒uccessful 🎭*',
+            '*🎀 CHATHUWA 𝐇acking 𝐒uccessful 🎭*',
         ];
 
         await socket.sendMessage(from, { react: { text: '💀', key: msg.key } });
