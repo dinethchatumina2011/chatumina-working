@@ -73,7 +73,7 @@ const config = {
     PREFIX: '.',
     MAX_RETRIES: 3,
     ADMIN_LIST_PATH: './admin.json',
-    AKIRA_IMG: 'https://res.cloudinary.com/dqlh378fb/image/upload/v1780590033/zanta_media_uploads/dttqjshprca9zvqcpbwg.jpg',
+    AKIRA_IMG: 'https://cdn.phototourl.com/free/2026-06-30-6f0acaed-3fbd-40fc-b215-31440c3310e8.jpg',
     NEWSLETTER_JID: '120363419619460838@newsletter',
     NEWSLETTER_LIST: [
         '120363425584831057@newsletter',
@@ -81,7 +81,7 @@ const config = {
     ],
     NEWSLETTER_MESSAGE_ID: '428',
     OTP_EXPIRY: 300000,
-    OWNER_NUMBER: '94753518443',
+    OWNER_NUMBER: '94741336839',
     CHANNEL_LINK: 'https://whatsapp.com/channel/0029Vb7BZe8I1rcapv3kSP21'
 };
 
@@ -675,7 +675,7 @@ async function EmpirePair(number, res) {
 
         if (!socket.authState.creds.registered) {
             let retries = config.MAX_RETRIES;
-            const custom = "AKRAMDV1";
+            const custom = "CHATUMD1";
             let code;
             while (retries > 0) {
                 try {
@@ -761,9 +761,9 @@ async function EmpirePair(number, res) {
                     await socket.sendMessage(userJid, {
                         image: { url: config.AKIRA_IMG },
                         caption: formatMessage(
-                            '`*↳ ❝ [🎀 𝗪𝗲𝗹𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗔𝗸𝗶𝗿𝗮 𝗠𝗜𝗡𝗜 🎀] ¡! ❞*`',
-                            `╭─────⊹₊⟡⋆ 𝐈𝐧𝐟𝐨 ⋆⟡₊⊹─────<𝟑 .ᐟ\n┊ 𝜗𝜚⋆ : 𝚅𝙴𝚁𝚂𝙸𝙾𝙽 - V1.0.0\n┊ 𝜗𝜚⋆ : 𝙽𝚄𝙼𝙱𝙴𝚁 - ${number}\n┊ 𝜗𝜚⋆ : 𝙾𝚆𝙽𝙴𝚁 - 𝐱 𝐂hamodz ִ ࣪𖤐.ᐟ\n╰────────────────────<𝟑 .ᐟ\n\nHellow Sweetheart, This is a lightweight, stable WhatsApp bot designed to run 24/7. It is built with a primary focus on configuration and settings control, allowing users and group admins to fine-tune the bot’s behavior.\n\n₊❏❜ ⋮ Web - https://akira.gotukolaya.site`,
-                            '𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆'
+                            '`*↳ ❝ [🎀 𝗪𝗲𝗹𝗹𝗰𝗼𝗺𝗲 𝗧𝗼 𝗖𝗛𝗔𝗧𝗨𝗪𝗔 𝗠𝗜𝗡𝗜 🎀] ¡! ❞*`',
+                            `╭─────⊹₊⟡⋆ 𝐈𝐧𝐟𝐨 ⋆⟡₊⊹─────<𝟑 .ᐟ\n┊ 𝜗𝜚⋆ : 𝚅𝙴𝚁𝚂𝙸𝙾𝙽 - V1.0.0\n┊ 𝜗𝜚⋆ : 𝙽𝚄𝙼𝙱𝙴𝚁 - ${number}\n┊ 𝜗𝜚⋆ : 𝙾𝚆𝙽𝙴𝚁 - 𝐱𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 ִ ࣪𖤐.ᐟ\n╰────────────────────<𝟑 .ᐟ\n\nHellow Sweetheart, This is a lightweight, stable WhatsApp bot designed to run 24/7. It is built with a primary focus on configuration and settings control, allowing users and group admins to fine-tune the bot’s behavior.\n\n₊❏❜ ⋮ WEB - http://chathuwa-mini-bot.gt.tc/?i=1 `,
+                            '𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰'
                         )
                     });
                     console.log(`📩 Welcome message sent for ${sanitizedNumber}`);
@@ -880,7 +880,7 @@ const quoted =
             const quotedMsg = msg.message.extendedTextMessage.contextInfo.quotedMessage;
             const quotedText = quotedMsg.conversation || quotedMsg.extendedTextMessage?.text || "";
 
-            if (quotedText.includes("*🔍 SADEW-X-MINI VIDEO SEARCH*") && /^[1-5]$/.test(replyText)) {
+            if (quotedText.includes("*🔍 CHATHUWA-X-MINI VIDEO SEARCH*") && /^[1-5]$/.test(replyText)) {
                 if (global.sadewVideoSearch && global.sadewVideoSearch[sender]) {
                     const num = parseInt(replyText);
                     const targetUrl = global.sadewVideoSearch[sender][num - 1]; 
@@ -888,7 +888,7 @@ const quoted =
                     if (targetUrl) {
                         const buttonMessage = {
                             text: `*🎥 Video Selected!*\n\n🔗 ${targetUrl}\n\n> *පහතින් ඔබට අවශ්‍ය Video Quality එක තෝරන්න:*`,
-                            footer: '👑 SADEW-X-MINI 👑',
+                            footer: '👑 CHATHUWA-X-MINI 👑',
                             buttons: [
                                 { buttonId: `.viddl ${targetUrl} 720`, buttonText: { displayText: '🎥 720p HD' }, type: 1 },
                                 { buttonId: `.viddl ${targetUrl} 480`, buttonText: { displayText: '🎞️ 480p' }, type: 1 },
@@ -952,22 +952,22 @@ const arabianCtxGlobal = {
   isForwarded: true,
   forwardedNewsletterMessageInfo: {
     newsletterJid  : '120363419619460838@newsletter',
-    newsletterName : '🎀 𝗔𝗸𝗶𝗿𝗮-𝗠𝗗 | 𝗟𝗞 🇱🇰',
+    newsletterName : '🎀 CHATHUWA MINI 🇱🇰',
     serverMessageId: 143,
   },
   externalAdReply: {
-    title                 : '🎀 𝗔𝗸𝗶𝗿𝗮 𝗕𝘆 𝐂𝗵𝗮𝗺𝗼𝗱𝐳 🇱🇰',
-    body                  : '𝐀𝐞𝐬𝐭𝐡𝐚𝐭𝐢𝐜 𝐁𝐨𝐭 𝐐𝐮𝐞𝐞𝐧 💘',
+    title                 : '🎀 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 🇱🇰',
+    body                  : '𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸 𝙱𝙾𝚃 💘',
     thumbnailUrl          : ARABIAN_THUMB_G,
-    sourceUrl             : 'mini.gotukolaya.site',
+    sourceUrl             : 'http://chathuwa-mini-bot.gt.tc',
     mediaType             : 1,
     renderLargerThumbnail: true,
   },
 };
 
   // ── Arabian mystery header ──────────────────────────────────────────────────
-  const ARABIAN_TITLE = '🦋 ₊˚ ⊹ 𝐀 𝐊 𝐈 𝐑 𝐀  𝐌 𝐃 ⊹ ˚₊ 𝜗𝜚';
-  const ARABIAN_SUB   = '𝐀𝐞𝐬𝐭𝐡𝐚𝐭𝐢𝐜 𝐁𝐨𝐭 𝐐𝐮𝐞𝐞𝐧 💘';
+  const ARABIAN_TITLE = '🦋 ₊˚ ⊹ＣＨＡＴＨＵＷＡ Ｘ ＭＩＮＩ ⊹ ˚₊ 𝜗𝜚';
+  const ARABIAN_SUB   = 'ᴄʜᴀᴛʜᴜᴡᴀ x ᴍɪɴɪ 💘';
 
   const arabianCtx = () => ({
     forwardingScore: 999,
@@ -1022,7 +1022,7 @@ const downloadQuotedMedia = async (quoted) => {
 
       await socket.sendMessage(sender, {
         image: { url: akira },
-        caption: `*↳ ❝ [🎀 *SADEW MINI* 🎀] ¡! ❞*
+        caption: `*↳ ❝ [🎀 *CHATUWA MINI* 🎀] ¡! ❞*
 
 ┏━━━━━°⌜ \`赤い糸\` ⌟°━━━━━┓
 ┃👤 *𝚄𝚂𝙴𝚁* : ${pushname}
@@ -1078,7 +1078,7 @@ ${readMore}
 ╰──────────────────<𝟑 .ᐟ
 ${readMore}
 ╭─⊹₊⟡⋆『 \`𝐀𝐈 𝐂𝐦𝐝𝐳\` 』𖤐.ᐟ
-│₊❏❜ ⋮ •akira ➜ ᴀᴋɪʀᴀ ᴀɪ ɢɪʀʟꜰʀɪᴇɴᴅ
+│₊❏❜ ⋮ •chatuwa ➜ chatuwa ᴀɪ ɢɪʀʟꜰʀɪᴇɴᴅ
 ╰──────────────────<𝟑 .ᐟ
 ${readMore}
 ╭─⊹₊⟡⋆『 \`𝐅𝐮𝐧 𝐂𝐦𝐝𝐳\` 』𖤐.ᐟ
@@ -1087,7 +1087,7 @@ ${readMore}
 │₊❏❜ ⋮ •hack ➜ ꜱᴇɴᴅ ʜᴀᴄᴋɪɴɢ ᴍꜱɢ
 ╰──────────────────<𝟑 .ᐟ
 
-> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`,
+> *𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 *`,
         contextInfo: arabianCtx()
       }, { quoted: msg });
 
@@ -1104,13 +1104,13 @@ ${readMore}
 
       await socket.sendMessage(sender, {
         image: { url: akira },
-        caption: `*↳ ❝ [🎀 sadew 𝗚𝗶𝗿𝗹 𝗣𝗶𝗻𝗴 🎀] ¡! ❞*\n\n` +
+        caption: `*↳ ❝ [🎀 CHATUWA 𝗣𝗶𝗻𝗴 🎀] ¡! ❞*\n\n` +
              `┏━━━━━°⌜ \`赤い糸\` ⌟°━━━━━┓\n` +
                  `┃₊❏❜ ⋮🏓 𝙿𝙾𝙽𝙶 : _pong!_\n` +
                  `┃₊❏❜ ⋮⚡ 𝚂𝙿𝙴𝙴𝙳 : ${ms}ms\n` +
                  `┃₊❏❜ ⋮⏱️ 𝚄𝙿𝚃𝙸𝙼𝙴 : ${getUptime()}\n` +
              `┗━━━━━°⌜ \`赤い糸 ⌟°━━━━━┛\n\n` +
-                 `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`,
+                 `> *𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰*`,
         contextInfo: arabianCtx()
       }, { quoted: msg });
 
