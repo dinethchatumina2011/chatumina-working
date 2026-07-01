@@ -1127,12 +1127,12 @@ case 'alive': {
     const minutes = Math.floor((uptime % 3600) / 60);
     const seconds = Math.floor(uptime % 60);
 
-    const title = '*↳ ❝ [🎀 *SADEW*𝗔𝗹𝗶𝘃𝗲 🎀] ¡! ❞*';
+    const title = '*↳ ❝ [🎀 *CHATHUWA*𝗔𝗹𝗶𝘃𝗲 🎀] ¡! ❞*';
     const content = `*⊹₊⟡⋆ ⋮ Ａｂｏｕｔ ᶻ 𝗓 𐰁 .ᐟ*\n` +
                     `➜ This is a lightweight, stable WhatsApp bot designed to run 24/7. It is allowing users and group admins to fine-tune the bot’s behavior.\n\n` +
                     `*⊹₊⟡⋆ ⋮ Ｄｅｐｌｏｙ ᶻ 𝗓 𐰁 .ᐟ*\n` +
-                    `➜ *Website:* https://whatsapp.com/channel/0029Vb7BZe8I1rcapv3kSP21`;
-    const footer = '> *𝗔esthatic 𝗤ueen 𝗕y SADEW 𝜗𝜚⋆*';
+                    `➜ *Website:*http://chathuwa-mini-bot.gt.tc/`;
+    const footer = '> * 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰*';
 
     await socket.sendMessage(sender, {
         image: { url: akira },
@@ -1157,7 +1157,7 @@ case 'alive': {
       const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
       const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-      const sysInfo = `*↳ ❝ [🎀 sadew 𝗦𝘆𝘀𝘁𝗲𝗺 🎀] ¡! ❞*\n\n` +
+      const sysInfo = `*↳ ❝ [🎀 CHATHUWA 𝗦𝘆𝘀𝘁𝗲𝗺 🎀] ¡! ❞*\n\n` +
               `┏━━━━━°⌜ \`赤い糸\` ⌟°━━━━━┓\n` +
                       `┃ *⏱️ 𝚄𝙿𝚃𝙸𝙼𝙴:* ${uptime}\n` +
                       `┃ *📟 𝚁𝙰𝙼 𝚄𝚂𝙰𝙶𝙴:* ${ramUsage} MB / ${totalRam} GB\n` +
@@ -1195,7 +1195,7 @@ case 'yta': {
         const YT_DOWNLOAD_API = "https://whiteshadow-x-api.onrender.com/api/download/ytmp3";
 
         let youtubeUrl = null;
-        let songTitle = "Sadew-MD Audio";
+        let songTitle = "CHATHUWA-MD Audio";
 
         // 1. Check if input is a YouTube Link
         const regex = /(https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|shorts\/)|youtu\.be\/)[^\s?#]+)/i;
@@ -1222,7 +1222,7 @@ case 'yta': {
         }
 
         // 2. Download 320kbps MP3
-        reply("📥 _*👑𝙎𝘼𝘿𝙀𝙒-𝙓-𝙈𝘿🔥*_ Extracting 320kbps High-Quality MP3..._");
+        reply("📥 _*𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*_ Extracting 320kbps High-Quality MP3..._");
         
         let audioDownloadUrl = null;
         const dlRes = await axios.get(`${YT_DOWNLOAD_API}?url=${encodeURIComponent(youtubeUrl)}&quality=320&apitoken=${API_TOKEN}`);
@@ -1240,7 +1240,7 @@ case 'yta': {
         try { await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } }); } catch (_) {}
 
         // Send Details Caption
-        const captionMsg = `✨ *_👑𝙎𝘼𝘿𝙀𝙒-𝙓-𝙈𝘿🔥_ Music System* ✨\n\n📌 *Title:* ${songTitle}\n💿 *Quality:* 320kbps Ultra-High Quality\n🚀 *Status:* downloading...`;
+        const captionMsg = `✨ *_𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸_ Music System* ✨\n\n📌 *Title:* ${songTitle}\n💿 *Quality:* 320kbps Ultra-High Quality\n🚀 *Status:* downloading...`;
         await reply(captionMsg);
 
         // 3. Send Audio File
@@ -1264,7 +1264,7 @@ case 'yta': {
 }
 
                     
-// ════════════ SADEW-X-MINI VIDEO DOWNLOADER ════════════
+// ════════════ CHATHUWA-X-MINI VIDEO DOWNLOADER ════════════
 
 case 'video':
 case 'ytmp4':
@@ -1302,7 +1302,7 @@ case 'playvid': {
         }
 
         const topResults = searchRes.data.result.slice(0, 5); 
-        let listText = `*🔍 SADEW-X-MINI VIDEO SEARCH*\n\n`;
+        let listText = `*🔍 CHATHUWA-X-MINI VIDEO SEARCH*\n\n`;
         
         // JID Memory එකට ලින්ක් ටික සේව් කිරීම (සර්ච් කරපු කෙනාගේ sender ID එකට අදාළව)
         global.sadewVideoSearch[sender] = topResults.map(v => v.url);
@@ -1332,12 +1332,12 @@ case 'viddl': {
         const quality = args[1];
 
         try { await socket.sendMessage(sender, { react: { text: '📥', key: msg.key } }); } catch (_) {}
-        reply(`📥 _*👑𝙎𝘼𝘿𝙀𝙒-𝙓-𝙈𝘿🔥*_ Downloading & Converting ${quality}p Video..._`);
+        reply(`📥 _*𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*_ Downloading & Converting ${quality}p Video..._`);
 
         let downloadUrl = "";
         let videoTitle = "Sadew-MD Video";
 
-        // --- 1st API (ZANTA-MD) ---
+        // --- 1st API (CHATHUWA-MD) ---
         try {
             const zantaApiUrl = `https://api.zanta-mini.store/api/ytdl?apiKey=zan_FIAO7Ayh_eo1vllkep6&url=${encodeURIComponent(url)}&type=mp4&quality=${quality}`;
             const res1 = await axios.get(zantaApiUrl);
@@ -1357,7 +1357,7 @@ case 'viddl': {
                     videoTitle = res2.data.title || videoTitle;
                 }
             } catch (err2) {
-                console.log("[SADEW-MD] All APIs Failed.");
+                console.log("[CHATHUWA-MD] All APIs Failed.");
             }
         }
 
@@ -1411,12 +1411,12 @@ case 'viddl': {
         const slDate = moment().tz('Asia/Colombo').format('YYYY-MM-DD');
         const slTimeNow = moment().tz('Asia/Colombo').format('HH:mm:ss');
 
-        let caption = `*↳ ❝ [🎀 sadew mini 🎀] ¡! ❞*\n\n` +
+        let caption = `*↳ ❝ [🎀 CHATHUWA mini 🎀] ¡! ❞*\n\n` +
                       `🎬 *TITLE :* ${videoTitle}\n` +
                       `📽️ *QUALITY :* ${quality}p\n` +
                       `__________________________\n\n` +
                       `📅 *DATE :* ${slDate} | ⌚ *TIME :* ${slTimeNow}\n\n` +
-                      `> *𝗔esthatic 𝗤ueen 𝗕y 𝗖hamod 𝜗𝜚⋆*`;
+                      `> *𝙲𝙷𝙰𝚃𝙷𝚄𝚆𝙰 𝚇 𝙼𝙸𝙽𝙸*`;
 
         // 3. Convert කරපු MP4 එක WhatsApp වෙත යැවීම
         await socket.sendMessage(sender, {
