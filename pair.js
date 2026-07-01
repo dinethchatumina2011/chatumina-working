@@ -1,4 +1,4 @@
-/* AKIRA GIRL MD MINI BOT - MULTI SESSION SUPPORT
+/* CHATHUWA MD MINI BOT - MULTI SESSION SUPPORT
   DEVELOPED BY CHAMOD TECH OFC
   FULLY ENC AND PRIVET SOURCE CODE    
   Code Ussai #akak - Thawa #akada balanne                                                                                                      
