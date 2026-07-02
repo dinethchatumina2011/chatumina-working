@@ -1,5 +1,5 @@
 /* CHATHUWA MD MINI BOT - MULTI SESSION SUPPORT
-  DEVELOPED BY CHAMOD TECH OFC
+  DEVELOPED BY chathuwa OFC
   FULLY ENC AND PRIVET SOURCE CODE    
   Code Ussai #akak - Thawa #akada balanne                                                                                                      
 */
