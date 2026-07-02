@@ -3,368 +3,626 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>chatuwa mini| Pair</title>
-  <!-- Google Fonts -->
+  <title>CHATUWA X MINI | WhatsApp Pair</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --accent: #ff1f5a;       /* Neon Red */
-      --accent2: #9d4edd;      /* Electric Purple */
-      --accent-glow: rgba(255, 31, 90, 0.3);
-      --bg: #050206;           /* Pitch Black */
-      --card: rgba(20, 10, 25, 0.45); /* Transparent Glass Window */
-      --border: rgba(255, 31, 90, 0.2);
-      --text: #fff0f5;
-      --muted: #b3a2b8;
+      --bg: #000000;
+      --neon-red: #FF0040;
+      --neon-cyan: #00F5FF;
+      --glass: rgba(10, 10, 15, 0.75);
+      --border: rgba(255, 0, 64, 0.2);
+      --text: #F8FAFC;
+      --text-dim: #94A3B8;
     }
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at center, #15051a 0%, var(--bg) 100%);
-      font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      font-family: 'Outfit', sans-serif;
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
-      padding: 40px 20px;
     }
 
-    /* Red & Purple Background Orbs */
-    body::before, body::after {
-      content: '';
+    /* Scary Background Video */
+    .bg-video {
       position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
       z-index: 0;
-    }
-    body::before {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255, 31, 90, 0.08) 0%, transparent 70%);
-      top: -150px; left: -100px;
-      animation: orbFloat 20s ease-in-out infinite;
-    }
-    body::after {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(157, 78, 221, 0.08) 0%, transparent 70%);
-      bottom: -100px; right: -100px;
-      animation: orbFloat 25s ease-in-out infinite reverse;
-    }
-    @keyframes orbFloat {
-      0%,100% { transform: translate(0,0) scale(1); }
-      50%      { transform: translate(40px,-30px) scale(1.08); }
+      object-fit: cover;
+      filter: brightness(0.25) contrast(1.3) saturate(0.7);
     }
 
-    /* Rose Petals Animation */
-    .rose-container {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 1; overflow: hidden;
+    /* Dark Overlay */
+    .video-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
+      z-index: 1;
     }
-    .rose-petal {
-      position: absolute; 
-      background: linear-gradient(135deg, #ff1f5a, #4a0014, #7b2cbf);
-      border-radius: 100% 0% 100% 100% / 100% 0% 100% 100%;
-      opacity: 0.85; 
-      transform-style: preserve-3d;
-      animation: fall linear infinite;
-      box-shadow: inset -2px -2px 5px rgba(0,0,0,0.3);
+
+    /* YouTube Audio - උඹ දුන්න link එක */
+    .bg-audio {
+      position: fixed;
+      top: -9999px;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
     }
-    @keyframes fall {
-      0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.85; }
-      90% { opacity: 0.85; }
-      100% { transform: translateY(105vh) translateX(120px) rotate(360deg); opacity: 0; }
-    }
+
+    /* Hidden rose container - script එකට ඕන */
+    .rose-container { display: none; }
 
     /* Loading Screen */
     #loading {
       position: fixed; inset: 0;
-      background: var(--bg);
+      background: #000;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       z-index: 9999;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+    #loading.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-wrapper {
+      position: relative;
+      width: 90px; height: 90px;
     }
     .loader-ring {
-      width: 64px; height: 64px;
-      border-radius: 50%;
+      position: absolute;
+      inset: 0;
       border: 3px solid transparent;
-      border-top-color: var(--accent);
-      animation: spin 1.2s linear infinite;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .loader-ring::after {
-      content: '';
-      position: absolute; inset: 6px;
+      border-top-color: var(--neon-red);
       border-radius: 50%;
-      border: 2px solid transparent;
-      border-top-color: var(--accent2);
-      animation: spin 0.9s linear infinite reverse;
+      animation: spin 1s linear infinite;
+      box-shadow: 0 0 20px var(--neon-red);
+    }
+    .loader-ring:nth-child(2) {
+      inset: 10px;
+      border-top-color: var(--neon-cyan);
+      animation-duration: 0.7s;
+      animation-direction: reverse;
+      box-shadow: 0 0 20px var(--neon-cyan);
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loader-text {
-      font-size: 0.85rem; letter-spacing: 4px;
-      color: var(--text); text-transform: uppercase;
-      opacity: 0.8; font-weight: 600;
+      margin-top: 28px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--neon-red);
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--neon-red);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
     }
 
-    .container { position: relative; z-index: 2; width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+    /* Main Container - Full Screen */
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-    /* Transparent Window Box */
-    .card {
+    .main-card {
       width: 100%;
-      max-width: 450px;
-      background: var(--card);
-      border: 1px solid rgba(255, 31, 90, 0.25);
-      border-radius: 24px;
-      padding: 40px 30px;
+      max-width: 500px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 48px 40px;
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      box-shadow: 
+        0 25px 80px rgba(0, 0, 0, 0.9),
+        0 0 60px rgba(255, 0, 64, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      animation: cardFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .main-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon-red), var(--neon-cyan), transparent);
+      animation: borderGlow 3s linear infinite;
+    }
+
+    @keyframes borderGlow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .card-header {
       text-align: center;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.7), inset 0 0 20px rgba(255, 31, 90, 0.05);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      margin-bottom: 36px;
     }
-    .card:hover {
+
+    .card-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-cyan));
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 2.5rem;
+      color: #fff;
+      box-shadow: 0 15px 40px rgba(255, 0, 64, 0.4);
+      animation: iconPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { box-shadow: 0 15px 40px rgba(255, 0, 64, 0.4); }
+      50% { box-shadow: 0 15px 60px rgba(0, 245, 255, 0.6); }
+    }
+
+    .card-header h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 0%, var(--neon-red) 50%, var(--neon-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+
+    .card-header p {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    /* Steps */
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      right: 22px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-red), var(--neon-cyan));
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .step-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .step.active .step-circle {
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-cyan));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 0 30px rgba(255, 0, 64, 0.6);
+      animation: stepGlow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes stepGlow {
+      0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 64, 0.6); }
+      50% { box-shadow: 0 0 40px rgba(0, 245, 255, 0.8); }
+    }
+
+    .step span {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Input */
+    .input-wrapper {
+      margin-bottom: 24px;
+    }
+
+    .input-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      display: block;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    }
+
+    .input-box {
+      display: flex;
+      gap: 12px;
+    }
+
+    .input-box input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.5);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
+      outline: none;
+      transition: all 0.3s;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .input-box input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 0 4px rgba(0, 245, 255, 0.15), 0 0 30px rgba(0, 245, 255, 0.2);
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .input-box input::placeholder {
+      color: #475569;
+      font-weight: 600;
+    }
+
+    .input-box button {
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-cyan));
+      border: none;
+      border-radius: 16px;
+      padding: 0 36px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 8px 30px rgba(255, 0, 64, 0.4);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .input-box button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-red));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .input-box button:hover::before {
+      opacity: 1;
+    }
+
+    .input-box button span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .input-box button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 30px rgba(157, 78, 221, 0.15);
-      border-color: rgba(157, 78, 221, 0.4);
+      box-shadow: 0 12px 40px rgba(255, 0, 64, 0.6);
     }
 
-    .logo-wrap {
-      width: 70px; height: 70px; margin: 0 auto 20px;
-      background: linear-gradient(135deg, rgba(255, 31, 90, 0.15), rgba(157, 78, 221, 0.15));
-      border: 1px solid rgba(255, 31, 90, 0.3);
-      border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; color: #fff;
-      text-shadow: 0 0 10px var(--accent);
+    .input-box button:active {
+      transform: translateY(-1px);
     }
 
-    .bot-name {
-      font-size: 2rem; font-weight: 800; letter-spacing: 2px;
-      background: linear-gradient(135deg, #fff, #ff1f5a, #9d4edd);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 6px;
-    }
-    .bot-subtitle {
-      font-size: 0.75rem; color: var(--muted); letter-spacing: 4px;
-      text-transform: uppercase; margin-bottom: 30px; font-weight: 600;
+    .input-box button:disabled {
+      background: #1a1a1a;
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.4;
     }
 
-    .divider { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-    .divider::before, .divider::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 31, 90, 0.3), transparent);
+    /* Waiting */
+    #waiting {
+      display: none;
+      text-align: center;
+      padding: 24px;
+      color: var(--neon-cyan);
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
     }
-    .divider span { font-size: 0.72rem; color: var(--muted); letter-spacing: 2px; }
 
-    /* Input & Button Window layout */
-    .input-row {
-      display: flex; background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px; overflow: hidden; margin-bottom: 24px;
-      transition: border-color 0.3s, box-shadow 0.3s;
+    .dots span {
+      display: inline-block;
+      animation: bounce 1.2s infinite;
+      font-weight: 900;
+      font-size: 1.3rem;
     }
-    .input-row:focus-within {
-      border-color: var(--accent);
-      box-shadow: 0 0 15px rgba(255, 31, 90, 0.2);
-    }
-    .input-row input {
-      flex: 1; padding: 16px; background: transparent;
-      border: none; outline: none; color: #fff; font-size: 1rem;
-    }
-    .input-row input::placeholder { color: rgba(255, 255, 255, 0.25); }
 
-    .input-row button {
-      padding: 0 24px; background: linear-gradient(135deg, #ff1f5a, #9d4edd);
-      border: none; cursor: pointer; color: #fff; font-size: 0.9rem;
-      font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-    .input-row button:hover { opacity: 0.9; }
-
-    /* About Section Grid (From image_2631b9.jpg) */
-    .about-section {
-      width: 100%; max-width: 800px; text-align: center; margin-top: 20px;
-    }
-    .about-title {
-      font-size: 1.6rem; font-weight: 800; margin-bottom: 10px;
-      background: linear-gradient(135deg, #fff, #b3a2b8);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .about-desc {
-      font-size: 0.9rem; color: var(--muted); max-width: 600px; margin: 0 auto 30px; line-height: 1.6;
-    }
-    
-    .grid-container {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%;
-    }
-    .grid-box {
-      background: rgba(20, 10, 25, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px; padding: 24px; text-align: left;
-      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .grid-box:hover {
-      border-color: rgba(255, 31, 90, 0.2);
-      transform: translateY(-2px);
-    }
-    .grid-icon {
-      font-size: 1.4rem; color: var(--accent); margin-bottom: 12px;
-    }
-    .grid-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
-    .grid-box p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
-
-    /* Badges Layout */
-    .badges-row {
-      display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;
-    }
-    .badge {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 10px 20px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
-    }
-    .badge span { color: var(--accent); }
-
-    /* Contact Us Window */
-    .contact-box {
-      background: rgba(255, 31, 90, 0.03);
-      border: 1px solid rgba(255, 31, 90, 0.15);
-      border-radius: 14px; padding: 15px; width: 100%; max-width: 450px;
-      margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
-    }
-    .contact-box a {
-      color: var(--text); text-decoration: none; font-weight: 700; font-size: 0.9rem;
-      transition: color 0.3s; display: flex; align-items: center; gap: 8px;
-    }
-    .contact-box a:hover { color: var(--accent); }
-
-    /* Messages & Results */
-    .msg { border-radius: 12px; padding: 14px 18px; margin: 14px 0; font-size: 0.9rem; text-align: left; line-height: 1.6; }
-    .msg.error   { background: rgba(239, 68, 68, 0.1);  border-left: 3px solid #ef4444; color: #fca5a5; }
-    .msg.success { background: rgba(255, 31, 90, 0.1); border-left: 3px solid var(--accent); color: #ffb3c6; }
-    .msg.info    { background: rgba(255, 255, 255, 0.04); border-left: 3px solid rgba(255, 255, 255, 0.15); color: var(--muted); }
-
-    .code-box {
-      background: rgba(157, 78, 221, 0.1); border: 1px solid rgba(157, 78, 221, 0.3);
-      border-radius: 14px; padding: 20px; margin: 18px 0 10px; cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .code-box:hover { background: rgba(157, 78, 221, 0.15); transform: translateY(-2px); }
-    .code-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-    .code-value { font-size: 1.6rem; font-weight: 800; letter-spacing: 4px; color: #fff; font-family: monospace; }
-    .copy-hint  { font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
-
-    #waiting { display: none; color: var(--muted); font-size: 0.9rem; padding: 8px 0; }
-    .dots span { display: inline-block; animation: dotBounce 1.4s infinite; color: var(--accent); }
     .dots span:nth-child(2) { animation-delay: 0.2s; }
     .dots span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes dotBounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-6px); opacity: 1; } }
 
-    .footer { margin-top: 20px; font-size: 0.72rem; color: rgba(255, 255, 255, 0.2); letter-spacing: 2px; }
+    @keyframes bounce {
+      0%, 80%, 100% { transform: translateY(0); opacity: 0.3; }
+      40% { transform: translateY(-10px); opacity: 1; }
+    }
 
-    @media (max-width: 768px) {
-      .grid-container { grid-template-columns: 1fr; }
-      .card { padding: 30px 20px; }
+    /* Messages */
+    .msg {
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      backdrop-filter: blur(10px);
+      font-weight: 600;
+    }
+
+    .msg i { margin-top: 2px; font-size: 1.2rem; }
+
+    .msg.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #FCA5A5;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    }
+
+    .msg.success {
+      background: rgba(0, 245, 255, 0.15);
+      border: 1px solid rgba(0, 245, 255, 0.4);
+      color: #67E8F9;
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    }
+
+    .msg.info {
+      background: rgba(255, 0, 64, 0.15);
+      border: 1px solid rgba(255, 0, 64, 0.4);
+      color: #FDA4AF;
+      box-shadow: 0 0 20px rgba(255, 0, 64, 0.2);
+    }
+
+    /* Code Box */
+    .code-box {
+      background: linear-gradient(135deg, rgba(255, 0, 64, 0.1), rgba(0, 245, 255, 0.1));
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      border-radius: 20px;
+      padding: 28px;
+      margin: 24px 0;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .code-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-cyan));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderRotate 3s linear infinite;
+    }
+
+    @keyframes borderRotate {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .code-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 15px 50px rgba(255, 0, 64, 0.3);
+    }
+
+    .code-label {
+      font-size: 0.75rem;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+    }
+
+    .code-value {
+      font-size: 2.5rem;
+      font-weight: 900;
+      letter-spacing: 10px;
+      background: linear-gradient(135deg, var(--neon-red), var(--neon-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 40px rgba(255, 0, 64, 0.6);
+      filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.4));
+    }
+
+    .copy-hint {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .contact {
+      text-align: center;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: all 0.3s;
+      padding: 12px 24px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+    }
+
+    .contact a:hover {
+      color: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      .main-card {
+        padding: 36px 28px;
+      }
+      .card-header h1 {
+        font-size: 1.75rem;
+      }
+      .input-box {
+        flex-direction: column;
+      }
+      .input-box button {
+        padding: 18px;
+      }
+      .code-value {
+        font-size: 2rem;
+        letter-spacing: 6px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Rose Petals Background -->
+  <!-- Scary Background Video -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="https://cdn.pixabay.com/video/2023/10/08/184053-872226052_large.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+
+  <!-- YouTube Audio Autoplay - උඹ දුන්න link එක https://youtube.com/shorts/KQItsThgpks -->
+  <iframe 
+    class="bg-audio" 
+    src="https://www.youtube.com/embed/KQItsThgpks?autoplay=1&loop=1&playlist=KQItsThgpks&controls=0&mute=0&enablejsapi=1&playsinline=1" 
+    allow="autoplay; encrypted-media; accelerometer; gyroscope; picture-in-picture"
+    frameborder="0">
+  </iframe>
+
+  <!-- Hidden rose container - පරණ script එකට ඕන නිසා -->
   <div class="rose-container" id="rose-bg"></div>
 
   <!-- Loading Screen -->
   <div id="loading">
-    <div class="loader-ring"></div>
-    <div class="loader-text">Loading CHATUWA X Mini...</div>
+    <div class="loader-wrapper">
+      <div class="loader-ring"></div>
+      <div class="loader-ring"></div>
+    </div>
+    <div class="loader-text">Initializing System</div>
   </div>
 
   <div class="container">
-    <!-- Pairing Card Window -->
-    <div class="card">
-      <div class="logo-wrap"><i class="fa-solid fa-bolt"></i></div>
-      <div class="bot-name">CHATUWA X MINI</div>
-      <div class="bot-subtitle">CHATUWA BUILD — BOT PAIRING</div>
-      <div class="divider"><span>LINK YOUR PHONE NUMBER</span></div>
+    <div class="main-card">
+      <div class="card-header">
+        <div class="card-icon">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <h1>CHATUWA X MINI</h1>
+        <p>Link your WhatsApp number to activate bot</p>
+      </div>
 
-      <div class="input-row">
-        <input id="number" type="tel" placeholder="+94xxxxxxxxx" autocomplete="off" />
-        <button id="submit">Pair</button>
+      <!-- Steps -->
+      <div class="steps">
+        <div class="step active">
+          <div class="step-circle">1</div>
+          <span>Enter</span>
+        </div>
+        <div class="step">
+          <div class="step-circle">2</div>
+          <span>Generate</span>
+        </div>
+        <div class="step">
+          <div class="step-circle">3</div>
+          <span>Link</span>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="input-wrapper">
+        <label class="input-label">WhatsApp Number</label>
+        <div class="input-box">
+          <input id="number" type="tel" placeholder="+94 71 234 5678" autocomplete="off" />
+          <button id="submit"><span>Generate</span></button>
+        </div>
       </div>
 
       <div id="waiting">
-        Generating your code <span class="dots"><span>.</span><span>.</span><span>.</span></span>
+        Generating code<span class="dots"><span>.</span><span>.</span></span>
       </div>
 
       <div id="result"></div>
-    </div>
 
-    <!-- About Section (From Image) -->
-    <div class="about-section">
-      <h2 class="about-title">What is CHATUWA X Mini?</h2>
-      <p class="about-desc">A fast, lightweight WhatsApp bot built for everyday use — from fun commands to handy utilities, all wrapped in a smooth, reliable experience.</p>
-      
-      <div class="grid-container">
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3>Fast & Lightweight</h3>
-          <p>Optimized to run smoothly even on low-resource hosting, with quick response times for every command.</p>
-        </div>
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-film"></i></div>
-          <h3>Movie & Media Search</h3>
-          <p>Search and fetch movies, links, and media straight from WhatsApp chat with a simple command.</p>
-        </div>
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-download"></i></div>
-          <h3>Direct Downloads</h3>
-          <p>Paste a link and get your file delivered directly to your chat — no extra apps, no hassle.</p>
-        </div>
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-users"></i></div>
-          <h3>Group Friendly</h3>
-          <p>Works reliably in group chats with proper sender checks, menus, and interactive buttons.</p>
-        </div>
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          <h3>Secure Pairing</h3>
-          <p>Pair your number safely with a one-time code — no QR scanning headaches, just type and connect.</p>
-        </div>
-        <div class="grid-box">
-          <div class="grid-icon"><i class="fa-solid fa-code"></i></div>
-          <h3>Always Improving</h3>
-          <p>Actively maintained and updated with new plugins, fixes, and features on a regular basis.</p>
-        </div>
-      </div>
-
-      <!-- Badges Row -->
-      <div class="badges-row">
-        <div class="badge"><span>24/7</span> UPTIME</div>
-        <div class="badge"><span>100%</span> FREE PAIRING</div>
-        <div class="badge"><span>FAST</span> REPLIES</div>
-        <div class="badge"><span>CHATUWA</span> BUILD</div>
+      <div class="contact">
+        <a href="https://wa.me/94741336839" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i>
+          Need Help? Contact Support
+        </a>
       </div>
     </div>
-
-    <!-- Contact Us Window -->
-    <div class="contact-box">
-      <a href="https://wa.me/94741336839" target="_blank">
-        <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i> 
-        CONTACT US: 0741336839
-      </a>
-    </div>
-
-    <div class="footer">© CHATUWA X MINI — ALL RIGHTS RESERVED</div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
