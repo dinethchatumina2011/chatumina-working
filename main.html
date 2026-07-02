@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>chatuwa mini| Pair</title>
-  <!-- Google Fonts -->
+  <title>CHATUWA X MINI | Pair</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
@@ -14,11 +13,11 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --accent: #ff1f5a;       /* Neon Red */
-      --accent2: #9d4edd;      /* Electric Purple */
+      --accent: #ff1f5a;
+      --accent2: #9d4edd;
       --accent-glow: rgba(255, 31, 90, 0.3);
-      --bg: #050206;           /* Pitch Black */
-      --card: rgba(20, 10, 25, 0.45); /* Transparent Glass Window */
+      --bg: #050206;
+      --card: rgba(20, 10, 25, 0.45);
       --border: rgba(255, 31, 90, 0.2);
       --text: #fff0f5;
       --muted: #b3a2b8;
@@ -38,7 +37,6 @@
       padding: 40px 20px;
     }
 
-    /* Red & Purple Background Orbs */
     body::before, body::after {
       content: '';
       position: fixed;
@@ -63,7 +61,6 @@
       50%      { transform: translate(40px,-30px) scale(1.08); }
     }
 
-    /* Rose Petals Animation */
     .rose-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 1; overflow: hidden;
@@ -84,7 +81,6 @@
       100% { transform: translateY(105vh) translateX(120px) rotate(360deg); opacity: 0; }
     }
 
-    /* Loading Screen */
     #loading {
       position: fixed; inset: 0;
       background: var(--bg);
@@ -119,7 +115,6 @@
 
     .container { position: relative; z-index: 2; width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
 
-    /* Transparent Window Box */
     .card {
       width: 100%;
       max-width: 450px;
@@ -167,7 +162,6 @@
     }
     .divider span { font-size: 0.72rem; color: var(--muted); letter-spacing: 2px; }
 
-    /* Input & Button Window layout */
     .input-row {
       display: flex; background: rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -190,9 +184,9 @@
       font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
       transition: opacity 0.2s;
     }
-    .input-row button:hover { opacity: 0.9; }
+    .input-row button:hover:not(:disabled) { opacity: 0.9; }
+    .input-row button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-    /* About Section Grid (From image_2631b9.jpg) */
     .about-section {
       width: 100%; max-width: 800px; text-align: center; margin-top: 20px;
     }
@@ -225,7 +219,6 @@
     .grid-box h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
     .grid-box p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
 
-    /* Badges Layout */
     .badges-row {
       display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap;
     }
@@ -235,7 +228,6 @@
     }
     .badge span { color: var(--accent); }
 
-    /* Contact Us Window */
     .contact-box {
       background: rgba(255, 31, 90, 0.03);
       border: 1px solid rgba(255, 31, 90, 0.15);
@@ -248,7 +240,6 @@
     }
     .contact-box a:hover { color: var(--accent); }
 
-    /* Messages & Results */
     .msg { border-radius: 12px; padding: 14px 18px; margin: 14px 0; font-size: 0.9rem; text-align: left; line-height: 1.6; }
     .msg.error   { background: rgba(239, 68, 68, 0.1);  border-left: 3px solid #ef4444; color: #fca5a5; }
     .msg.success { background: rgba(255, 31, 90, 0.1); border-left: 3px solid var(--accent); color: #ffb3c6; }
@@ -270,6 +261,13 @@
     .dots span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes dotBounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-6px); opacity: 1; } }
 
+    .retry-btn {
+      margin-top: 10px; padding: 10px 20px; background: linear-gradient(135deg, #ff1f5a, #9d4edd);
+      border: none; border-radius: 10px; color: #fff; font-weight: 700; cursor: pointer;
+      font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .retry-btn:hover { opacity: 0.9; }
+
     .footer { margin-top: 20px; font-size: 0.72rem; color: rgba(255, 255, 255, 0.2); letter-spacing: 2px; }
 
     @media (max-width: 768px) {
@@ -280,17 +278,14 @@
 </head>
 <body>
 
-  <!-- Rose Petals Background -->
   <div class="rose-container" id="rose-bg"></div>
 
-  <!-- Loading Screen -->
   <div id="loading">
     <div class="loader-ring"></div>
     <div class="loader-text">Loading CHATUWA X Mini...</div>
   </div>
 
   <div class="container">
-    <!-- Pairing Card Window -->
     <div class="card">
       <div class="logo-wrap"><i class="fa-solid fa-bolt"></i></div>
       <div class="bot-name">CHATUWA X MINI</div>
@@ -298,18 +293,17 @@
       <div class="divider"><span>LINK YOUR PHONE NUMBER</span></div>
 
       <div class="input-row">
-        <input id="number" type="tel" placeholder="+94xxxxxxxxx" autocomplete="off" />
+        <input id="number" type="tel" placeholder="+947XXXXXXXX" autocomplete="off" />
         <button id="submit">Pair</button>
       </div>
 
       <div id="waiting">
-        Generating your code <span class="dots"><span>.</span><span>.</span><span>.</span></span>
+        Generating your code <span class="dots"><span>.</span><span>.</span></span>
       </div>
 
       <div id="result"></div>
     </div>
 
-    <!-- About Section (From Image) -->
     <div class="about-section">
       <h2 class="about-title">What is CHATUWA X Mini?</h2>
       <p class="about-desc">A fast, lightweight WhatsApp bot built for everyday use — from fun commands to handy utilities, all wrapped in a smooth, reliable experience.</p>
@@ -347,7 +341,6 @@
         </div>
       </div>
 
-      <!-- Badges Row -->
       <div class="badges-row">
         <div class="badge"><span>24/7</span> UPTIME</div>
         <div class="badge"><span>100%</span> FREE PAIRING</div>
@@ -356,7 +349,6 @@
       </div>
     </div>
 
-    <!-- Contact Us Window -->
     <div class="contact-box">
       <a href="https://wa.me/94741336839" target="_blank">
         <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.2rem;"></i> 
@@ -400,32 +392,56 @@
     async function copyCode(code) {
       try {
         await navigator.clipboard.writeText(code);
-        document.querySelector('.code-value').textContent = '✓ COPIED!';
-        document.querySelector('.copy-hint').textContent = 'Code copied to clipboard!';
-        setTimeout(() => {
-          const v = document.querySelector('.code-value');
-          if (v) { v.textContent = code; document.querySelector('.copy-hint').textContent = 'Tap to copy'; }
-        }, 2500);
-      } catch (_) {}
+        const codeVal = document.querySelector('.code-value');
+        const hint = document.querySelector('.copy-hint');
+        if (codeVal && hint) {
+          codeVal.textContent = '✓ COPIED!';
+          hint.textContent = 'Code copied to clipboard!';
+          setTimeout(() => {
+            codeVal.textContent = code;
+            hint.textContent = 'Tap to copy';
+          }, 2500);
+        }
+      } catch (err) {
+        alert('Copy failed. Code: ' + code);
+      }
     }
 
-    submitBtn.addEventListener('click', async () => {
-      const raw = numEl.value.replace(/[^0-9]/g, '');
-      if (!raw) return showMsg('<div class="msg error"><i class="fas fa-exclamation-circle"></i> Please enter your WhatsApp number.</div>');
-      if (raw.length < 10) return showMsg('<div class="msg error"><i class="fas fa-exclamation-circle"></i> Number too short. Include country code (e.g. 9475xxxxxxx).</div>');
+    // Main pair function with full error handling
+    async function pairNumber() {
+      let raw = numEl.value.replace(/[^0-9]/g, '');
+      
+      // Auto add 94 if missing
+      if (raw.startsWith('0')) raw = '94' + raw.substring(1);
+      if (!raw.startsWith('94') && raw.length === 9) raw = '94' + raw;
+      
+      if (!raw) {
+        return showMsg('<div class="msg error"><i class="fas fa-exclamation-circle"></i> Please enter your WhatsApp number.</div>');
+      }
+      if (raw.length < 11 || raw.length > 12) {
+        return showMsg('<div class="msg error"><i class="fas fa-exclamation-circle"></i> Invalid number. Use format: 947XXXXXXXX</div>');
+      }
 
-      numEl.type  = 'text';
       numEl.value = '+' + raw;
-
       resultEl.innerHTML = '';
       waitingEl.style.display = 'block';
       submitBtn.disabled = true;
+      submitBtn.textContent = 'PAIRING...';
 
       try {
-        const { data } = await axios.get(`/code?number=${raw}`);
+        const { data } = await axios.get(`/code?number=${raw}`, {
+          timeout: 15000 // 15 second timeout
+        });
+        
         waitingEl.style.display = 'none';
         submitBtn.disabled = false;
-        const code = data.code || 'UNAVAILABLE';
+        submitBtn.textContent = 'PAIR';
+        
+        if (!data.code) {
+          throw new Error('Server did not return a code');
+        }
+        
+        const code = data.code;
         showMsg(`
           <div class="msg success"><i class="fas fa-check-circle"></i> Pairing code generated successfully!</div>
           <div class="code-box" onclick="copyCode('${code}')">
@@ -440,14 +456,45 @@
             3. Enter the code above
           </div>
         `);
-      } catch (_) {
+        
+      } catch (err) {
         waitingEl.style.display = 'none';
         submitBtn.disabled = false;
-        showMsg('<div class="msg error"><i class="fas fa-times-circle"></i> Connection failed. Please try again.</div>');
+        submitBtn.textContent = 'PAIR';
+        
+        let errorMsg = '<i class="fas fa-times-circle"></i> Connection failed. ';
+        
+        if (err.code === 'ECONNABORTED') {
+          errorMsg += 'Server is taking too long to respond. Try again.';
+        } else if (err.response) {
+          // Server responded with error
+          if (err.response.status === 404) {
+            errorMsg += 'API endpoint not found. Contact admin.';
+          } else if (err.response.status === 500) {
+            errorMsg += 'Server error. The bot might be down.';
+          } else if (err.response.status === 429) {
+            errorMsg += 'Too many requests. Wait 1 minute and try again.';
+          } else {
+            errorMsg += `Server error: ${err.response.status}`;
+          }
+        } else if (err.request) {
+          // No response
+          errorMsg += 'Cannot reach server. Check your internet or the bot may be offline.';
+        } else {
+          errorMsg += err.message || 'Unknown error occurred.';
+        }
+        
+        showMsg(`
+          <div class="msg error">${errorMsg}</div>
+          <button class="retry-btn" onclick="pairNumber()">
+            <i class="fas fa-redo"></i> Try Again
+          </button>
+        `);
       }
-    });
+    }
 
-    numEl.addEventListener('keydown', e => { if (e.key === 'Enter') submitBtn.click(); });
+    submitBtn.addEventListener('click', pairNumber);
+    numEl.addEventListener('keydown', e => { if (e.key === 'Enter') pairNumber(); });
   </script>
 </body>
 </html>
